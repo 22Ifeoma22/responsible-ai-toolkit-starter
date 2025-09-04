@@ -15,13 +15,13 @@ EVIDENTLY_ERR = None
 # --- Evidently (optional) ---
 EVIDENTLY_OK = True
 EVIDENTLY_ERR = None
+# ---- Optional: Evidently (drift) ----
 try:
     from evidently.report import Report
     from evidently.metric_preset import DataDriftPreset
-    from evidently.metrics import ClassificationQualityMetric
-except Exception as e:
-    EVIDENTLY_OK = False
-    EVIDENTLY_ERR = e
+    HAS_EVIDENTLY = True
+except Exception:
+    HAS_EVIDENTLY = False
 
 # ---- Config for the checklist file (no hard-coded C:\ paths) ----
 DATA_PATH = Path(__file__).parent / "ISO42001_NIST_Audit_Checklist_Dashboard.xlsx"
@@ -469,6 +469,17 @@ for col in ref_df.columns:
 psi_table = pd.DataFrame(rows).sort_values("PSI", ascending=False)
 st.write("**Simple drift (PSI)** — >0.10 small, >0.25 moderate, >0.50 major.")
 st.dataframe(psi_table, use_container_width=True)
+st.subheader("Drift check (PSI)")
+
+if not HAS_EVIDENTLY:
+    st.info("Evidently is not installed in this environment. "
+            "Run `pip install evidently` to enable this section.")
+else:
+    # >>> keep your existing drift code here (unchanged) <<<
+    # example:
+    # report = Report(metrics=[DataDriftPreset()])
+    # report.run(reference_data=ref_df, current_data=cur_df)
+    # st.components.v1.html(report.get_html(), height=500, scrolling=True)
 
 
 

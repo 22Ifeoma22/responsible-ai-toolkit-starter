@@ -1,32 +1,18 @@
-
 # Responsible AI Toolkit (Starter)
 
-This starter contains a Streamlit dashboard showing:
-- SHAP explainability
-- Fairlearn fairness metrics
-- Evidently drift & classification quality
+A Streamlit dashboard to operationalize Responsible AI: load an audit checklist, edit Owner/Status, view KPIs and a risk heatmap, run lightweight drift checks (PSI), and align controls to the **NIST AI RMF**. Includes **demo mode** so everything is visible without proprietary data.
 
-## How to run
-1) Create and activate a virtual environment
-   - Windows (PowerShell):
-     ```ps1
-     python -m venv .venv
-     .\.venv\Scripts\Activate
-     ```
-   - macOS/Linux (bash):
-     ```bash
-     python3 -m venv .venv
-     source .venv/bin/activate
-     ```
+## Features
+- 📋 Editable checklist (Owner & Status)
+- 📊 KPIs + Status distribution
+- 🔥 Risk heatmap (Owner × Status)
+- 📈 Lightweight drift check (PSI)
+- 🧩 NIST AI RMF alignment (upload `nist_mapping.csv`)
+- ⬇️ Export aligned/updated checklist (CSV/Excel)
 
-2) Install requirements
+## Quick start
 ```bash
-pip install --upgrade pip
+python -m venv .venv
+.\.venv\Scripts\Activate
 pip install -r requirements.txt
-```
-
-3) Run the app
-```bash
-streamlit run app.py
-```
-Then open http://localhost:8501 in your browser if it doesn’t open automatically.
+python -m streamlit run app.py
