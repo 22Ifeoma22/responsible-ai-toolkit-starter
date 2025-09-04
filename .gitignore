@@ -1,0 +1,13 @@
+﻿# Python
+__pycache__/
+*.pyc
+
+# Streamlit & editor
+.streamlit/
+.vscode/
+
+# Virtual env
+.venv/
+
+# Local data
+ISO42001_NIST_Audit_Checklist_Dashboard.xlsx
